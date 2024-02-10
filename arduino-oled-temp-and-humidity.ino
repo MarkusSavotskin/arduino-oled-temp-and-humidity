@@ -48,6 +48,7 @@ ESP8266WebServer server(80);
 void restServerRouting() {
   server.on("/", HTTP_GET, []() {
     String response = "{\"temp\": \"" + String(tempValue) + "\", \"humidity\": \"" + String(humidityValue) + "\"}";
+    server.enableCORS(true);
     server.send(200, "application/json", response);
 });
 }
